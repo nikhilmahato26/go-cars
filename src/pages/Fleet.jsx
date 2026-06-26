@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Fuel, ShieldCheck, Check, Sparkles, Filter, ChevronRight, Info, AlertCircle, X,
@@ -12,7 +13,35 @@ export default function Fleet() {
   const [selectedCar, setSelectedCar] = useState(null);
   const [bookingSuccess, setBookingSuccess] = useState(false);
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [searchParams] = useSearchParams();
+  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm();
+
+  useEffect(() => {
+    // 1. Handle category query parameter
+    const catParam = searchParams.get('category');
+    if (catParam) {
+      setFilter(catParam);
+    }
+
+    // 2. Handle car query parameter to auto-open booking modal
+    const carParam = searchParams.get('car');
+    if (carParam) {
+      const car = fleetData.find(c => c.id === carParam);
+      if (car) {
+        setSelectedCar(car);
+      }
+    }
+
+    // 3. Handle pickup/return date values
+    const pickupParam = searchParams.get('pickup');
+    const returnParam = searchParams.get('return');
+    if (pickupParam) {
+      setValue('startDate', pickupParam);
+    }
+    if (returnParam) {
+      setValue('endDate', returnParam);
+    }
+  }, [searchParams, setValue]);
 
   // Extract categories
   const categories = ['All', 'Hatchback', 'Compact SUV', 'SUV 4x4', 'Premium SUV', 'MUV'];

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   TrendingUp, CheckCircle2, ShieldCheck, Clock, Wrench, Droplet, Users, 
@@ -12,6 +12,29 @@ import IncomeCalculator from '../components/Home/IncomeCalculator';
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [pickupDate, setPickupDate] = useState('');
+  const [returnDate, setReturnDate] = useState('');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    let query = `/fleet`;
+    const params = [];
+    if (selectedCategory && selectedCategory !== 'All') {
+      params.push(`category=${encodeURIComponent(selectedCategory)}`);
+    }
+    if (pickupDate) {
+      params.push(`pickup=${encodeURIComponent(pickupDate)}`);
+    }
+    if (returnDate) {
+      params.push(`return=${encodeURIComponent(returnDate)}`);
+    }
+    if (params.length > 0) {
+      query += `?${params.join('&')}`;
+    }
+    navigate(query);
+  };
 
   // Stagger animation container config
   const containerVariants = {
@@ -84,18 +107,18 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white leading-tight"
             >
-              Attach Your Car & Earn <br />
-              <span className="text-gold-gradient">Fixed Monthly Income</span>
+              Premium Self-Drive <br />
+              <span className="text-gold-gradient">Car Rental Service</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg sm:text-xl text-slate-300 mt-6 max-w-xl font-light"
+              className="text-lg sm:text-xl text-slate-300 mt-6 max-w-2xl font-light"
             >
-              Your Car. Your Income. <span className="text-gold font-medium">Our Responsibility.</span> <br />
-              Secure up to ₹50,000/month with India's most trusted automotive attachment partner.
+              Drive your adventure in Firozabad with our handpicked fleet of luxury SUVs, hatchbacks, and rugged 4x4s. 
+              Book instantly with zero security hassles. Or attach your car to earn a guaranteed monthly income.
             </motion.p>
 
             <motion.div
@@ -105,17 +128,77 @@ export default function Home() {
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-8"
             >
               <Link
-                to="/contact"
-                className="px-8 py-4 rounded-xl bg-gold text-dark font-display font-bold text-sm tracking-wider hover:bg-gold-light hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300 uppercase text-center"
+                to="/fleet"
+                className="px-8 py-4 rounded-xl bg-gold text-dark font-display font-bold text-sm tracking-wider hover:bg-gold-light hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300 uppercase text-center animate-pulse"
               >
-                Attach My Car
+                Book Self-Drive
               </Link>
               <Link
-                to="/fleet"
+                to="/contact"
                 className="px-8 py-4 rounded-xl border border-white/20 hover:border-gold hover:text-gold backdrop-blur-md bg-white/5 font-display font-bold text-sm tracking-wider transition-all duration-300 uppercase text-center"
               >
-                Rent a Car
+                Attach Your Car
               </Link>
+            </motion.div>
+
+            {/* Quick Booking Search Widget */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="mt-12 glass-panel p-5 rounded-2xl border border-white/10 shadow-2xl relative z-20 max-w-4xl"
+            >
+              <form onSubmit={handleSearch} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+                {/* Vehicle Category */}
+                <div className="flex flex-col gap-1.5 text-left">
+                  <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Select Category</label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="py-3 px-4 bg-slate-900/90 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-gold transition-colors cursor-pointer appearance-none"
+                    style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%23d4af37\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.75rem center', backgroundSize: '1.5em 1.5em', backgroundRepeat: 'no-repeat', paddingRight: '2.5rem' }}
+                  >
+                    <option value="All" className="bg-slate-950 text-white">All Categories</option>
+                    <option value="Hatchback" className="bg-slate-950 text-white">Hatchback</option>
+                    <option value="Compact SUV" className="bg-slate-950 text-white">Compact SUV</option>
+                    <option value="SUV 4x4" className="bg-slate-950 text-white">SUV 4x4</option>
+                    <option value="Premium SUV" className="bg-slate-950 text-white">Premium SUV</option>
+                    <option value="MUV" className="bg-slate-950 text-white">MUV</option>
+                  </select>
+                </div>
+
+                {/* Pickup Date */}
+                <div className="flex flex-col gap-1.5 text-left">
+                  <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Pickup Date</label>
+                  <input
+                    type="date"
+                    value={pickupDate}
+                    onChange={(e) => setPickupDate(e.target.value)}
+                    min={new Date().toISOString().split('T')[0]}
+                    className="py-3 px-4 bg-slate-900/90 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-gold transition-colors cursor-pointer"
+                  />
+                </div>
+
+                {/* Return Date */}
+                <div className="flex flex-col gap-1.5 text-left">
+                  <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Return Date</label>
+                  <input
+                    type="date"
+                    value={returnDate}
+                    onChange={(e) => setReturnDate(e.target.value)}
+                    min={pickupDate || new Date().toISOString().split('T')[0]}
+                    className="py-3 px-4 bg-slate-900/90 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-gold transition-colors cursor-pointer"
+                  />
+                </div>
+
+                {/* Submit button */}
+                <button
+                  type="submit"
+                  className="py-3 px-6 bg-gold text-dark hover:bg-gold-light hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] rounded-xl font-display font-extrabold text-xs tracking-wider uppercase transition-all duration-300 w-full text-center"
+                >
+                  Search & Book
+                </button>
+              </form>
             </motion.div>
 
             {/* Hero Statistics */}
@@ -158,14 +241,14 @@ export default function Home() {
         <IncomeCalculator />
       </section>
 
-      {/* 3. Monthly Rental Packages Preview */}
+      {/* 3. Featured Self-Drive Fleet Preview */}
       <section className="py-24 px-6 bg-slate-950/40 border-y border-white/5 relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
             <div className="text-left">
-              <span className="text-xs font-display font-bold text-gold uppercase tracking-widest">Leasing Options</span>
+              <span className="text-xs font-display font-bold text-gold uppercase tracking-widest">Rent in Style</span>
               <h2 className="text-3xl sm:text-4xl font-display font-extrabold mt-2 text-white">
-                Monthly Rental Packages
+                Featured Self-Drive Fleet
               </h2>
             </div>
             <Link to="/fleet" className="inline-flex items-center gap-2 text-gold hover:text-gold-light font-display text-sm font-semibold tracking-wider uppercase mt-4 md:mt-0 transition-colors group">
@@ -183,12 +266,17 @@ export default function Home() {
                       alt={car.name} 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
                     />
-                    <div className="absolute top-4 right-4 px-3.5 py-1.5 rounded-lg bg-emerald-500 text-dark font-display font-extrabold text-xs tracking-wider uppercase">
-                      Earn {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(car.monthlyIncome)}/Mo
+                    <div className="absolute top-4 right-4 px-3.5 py-1.5 rounded-lg bg-gold text-dark font-display font-extrabold text-xs tracking-wider uppercase shadow-[0_0_10px_rgba(212,175,55,0.3)]">
+                      ₹{car.dailyRent.toLocaleString('en-IN')}/Day
                     </div>
                   </div>
                   <div className="p-6 text-left">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-slate-500">{car.type}</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-slate-500">{car.type}</span>
+                      <span className="text-[9px] uppercase font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
+                        Attach: ₹{(car.monthlyIncome/1000)}K/Mo
+                      </span>
+                    </div>
                     <h3 className="text-xl font-display font-extrabold mt-1 text-white">{car.name}</h3>
                     <p className="text-xs text-slate-400 mt-2 line-clamp-2">{car.description}</p>
                     
@@ -207,10 +295,10 @@ export default function Home() {
                 </div>
                 <div className="p-6 pt-0">
                   <Link
-                    to="/contact"
-                    className="w-full inline-flex items-center justify-center py-3.5 bg-white/5 border border-white/10 hover:border-gold hover:bg-gold hover:text-dark rounded-xl font-display font-semibold text-xs tracking-wider transition-all duration-300 uppercase"
+                    to={`/fleet?car=${car.id}`}
+                    className="w-full inline-flex items-center justify-center py-3.5 bg-gold text-dark hover:bg-transparent hover:text-gold border border-gold rounded-xl font-display font-bold text-xs tracking-wider transition-all duration-300 uppercase text-center"
                   >
-                    Partner Inquiry
+                    Book Self-Drive
                   </Link>
                 </div>
               </div>

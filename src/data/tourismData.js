@@ -28,7 +28,7 @@ export const tourPackages = [
     route: 'Srinagar - Gulmarg - Pahalgam - Sonamarg',
     price: '₹22,999',
     originalPrice: '₹29,999',
-    image: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&q=80&w=800',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_7lNfxVxLG2BwmqT15KmwLVU9TiL8K8oJgZuxtXcIgDnNnzySsW9mOsk&s=10',
     highlights: ['Shikara Ride on Dal Lake', 'Gulmarg Gondola Ride', 'Betaab Valley', 'Meadow of Gold Sonamarg'],
     tags: ['Luxury', 'Honeymoon']
   },

@@ -13,7 +13,7 @@ export const fleetData = [
       mileage: '22.38 kmpl'
     },
     features: ['Air Conditioning', 'Power Steering', 'Touchscreen Infotainment', 'Dual Airbags', 'ABS with EBD'],
-    image: 'https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&q=80&w=600',
+    image: 'https://avgmotors.co.in/wp-content/uploads/2022/03/Pearl-Arctic-White-2-876x535.png',
     description: 'A stylish, fuel-efficient hatchback perfect for navigating city traffic with extreme ease.'
   },
   {
@@ -30,7 +30,7 @@ export const fleetData = [
       mileage: '22.35 kmpl'
     },
     features: ['Led Projector Headlamps', 'SmartPlay Studio', 'Automatic Climate Control', 'Reverse Camera', 'Keyless Entry'],
-    image: 'https://images.unsplash.com/photo-1616422285623-13ff0162193c?auto=format&fit=crop&q=80&w=600',
+    image: 'https://stimg.cardekho.com/pwa/img/baleno-nobg.webp',
     description: 'A premium hatchback offering spacious interiors, cutting-edge technology, and premium road presence.'
   },
   {
@@ -47,7 +47,7 @@ export const fleetData = [
       mileage: '18.97 kmpl'
     },
     features: ['5-Star GNCAP Safety', '7-inch Infotainment', 'Cruise Control', 'Traction Pro Mode', 'High Ground Clearance'],
-    image: 'https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&q=80&w=600',
+    image: 'https://imgd.aeplcdn.com/370x208/n/dnqajib_1900851.png?q=80',
     description: 'A sub-compact SUV that combines rugged appeal, exceptional safety, and agile city handling.'
   },
   {
@@ -64,7 +64,7 @@ export const fleetData = [
       mileage: '19.01 kmpl'
     },
     features: ['Harmon Sound System', 'Dual Airbags', 'Corner Stability Control', 'Rear Parking Sensors', 'Digital Instrument Cluster'],
-    image: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=600',
+    image: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/219990/next-gen-tiago-exterior-right-front-three-quarter-38.png?isig=0&q=80',
     description: 'A popular dynamic hatchback known for its solid build quality, safety, and excellent driving dynamics.'
   },
   {
@@ -81,7 +81,7 @@ export const fleetData = [
       mileage: '17.38 kmpl'
     },
     features: ['Electric Sunroof', '360 View Camera', 'Head-up Display', '6 Airbags', 'Wireless Charging'],
-    image: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&q=80&w=600',
+    image: 'https://stimg.cardekho.com/images/carexteriorimages/930x620/Maruti/Brezza/10400/1770885013083/front-left-side-47.jpg',
     description: 'A high-end compact SUV loaded with modern features, spacious cabins, and highly reliable hybrid tech.'
   },
   {
@@ -98,7 +98,7 @@ export const fleetData = [
       mileage: '17.5 kmpl'
     },
     features: ['BlueLink Connected Car', 'Smart Electric Sunroof', 'Paddle Shifters', 'Air Purifier', 'LED DRLs'],
-    image: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=600',
+    image: 'https://imgd.aeplcdn.com/1056x594/n/e435k8b_1929418.jpg?q=80',
     description: 'A stylish and tech-loaded compact SUV built for the modern urban driver.'
   },
   {
@@ -115,7 +115,7 @@ export const fleetData = [
       mileage: '20.51 kmpl'
     },
     features: ['Spacious 3-Row Seating', 'Roof Mounted AC Vents', 'Touchscreen Audio', 'Hill Hold Assist', 'Flexible Boot Space'],
-    image: 'https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=600',
+    image: 'https://stimg.cardekho.com/images/carexteriorimages/630x420/Maruti/Ertiga-Tour/9617/1762858404297/front-left-side-47.jpg',
     description: 'India\'s most loved multi-utility vehicle, perfect for group travels and comfortable family journeys.'
   },
   {
@@ -132,7 +132,7 @@ export const fleetData = [
       mileage: '15.2 kmpl'
     },
     features: ['4x4 Drivetrain', 'Removable Roof Panels', 'Touchscreen with Adventure Statistics', 'Drizzle-Resistant Cabin', 'Roll Cage'],
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=600',
+    image: 'https://static.caronphone.com/public/brands/20/685/3200/3200_1759751947.webp',
     description: 'The ultimate lifestyle off-roader. Command the roads and explore any terrain with absolute confidence.'
   },
   {
@@ -149,7 +149,7 @@ export const fleetData = [
       mileage: '16.2 kmpl'
     },
     features: ['Adrenox Connect', 'Sony 12-Speaker Sound System', 'Electric Sunroof', 'Dual Zone FATC', 'Multiple Drive Modes'],
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.91wheels.com/assets/c_images/gallery/mahindra/scorpio/mahindra-scorpio-6-1766743994.png?w=520&q=40',
     description: 'The "Big Daddy of SUVs". A premium, dominating SUV offering supreme luxury, space, and massive power.'
   }
 ];

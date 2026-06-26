@@ -18,7 +18,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Fleet', path: '/fleet' },
+    { name: 'Book Car', path: '/fleet' },
     { name: 'Finance & Insurance', path: '/finance' },
     { name: 'Marketplace', path: '/marketplace' },
     { name: 'Tourism', path: '/tourism' },
@@ -78,10 +78,10 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <Link
-              to="/contact"
-              className="px-5 py-2.5 rounded-full border border-gold/40 text-gold hover:bg-gold hover:text-dark hover:border-gold hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] font-display text-xs font-semibold tracking-wider transition-all duration-300 uppercase"
+              to="/fleet"
+              className="px-5 py-2.5 rounded-full bg-gold text-dark border border-gold hover:bg-transparent hover:text-gold hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] font-display text-xs font-bold tracking-wider transition-all duration-300 uppercase"
             >
-              Get In Touch
+              Book a Car
             </Link>
           </div>
         </div>
@@ -124,11 +124,11 @@ export default function Navbar() {
               ))}
               <div className="pt-4 flex flex-col gap-3">
                 <Link
-                  to="/contact"
+                  to="/fleet"
                   onClick={() => setIsOpen(false)}
                   className="w-full py-3 text-center rounded-lg bg-gold text-dark font-display font-bold tracking-wider hover:bg-gold-light transition-all duration-300 uppercase text-sm"
                 >
-                  Enquire Now
+                  Book a Car
                 </Link>
               </div>
             </div>
